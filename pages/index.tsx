@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import Header from "../components/Header";
 import Head from "next/head";
-// import style from "../styles/home.module.css";
+import style from "../styles/estarlincito.module.css";
 import { useContext } from "react";
 import UserContext from "../context/UserContext";
 
@@ -21,8 +21,8 @@ const Home = () => {
         </Head>
 
         <Header />
-        <main className={"style.main"}>
-          <div className={"style.btn"} onClick={handleClick}>
+        <main className={style.main}>
+          <div className={style.btn} onClick={handleClick}>
             <h2 className="title">Empezar</h2>
           </div>
         </main>
