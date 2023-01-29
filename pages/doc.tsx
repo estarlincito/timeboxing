@@ -1,4 +1,4 @@
-import style from "../styles/doc.module.css";
+import style from "../styles/docPage.module.css";
 import Link from "next/link";
 import Head from "next/head";
 

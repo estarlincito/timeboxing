@@ -1,4 +1,4 @@
-import style from "../styles/timeboxing.module.css";
+import style from "../styles/timeboxingPage.module.css";
 import Link from "next/link";
 import Head from "next/head";
 import { useContext } from "react";
@@ -7,7 +7,7 @@ import Card from "../components/Card";
 import { BsPencilSquare } from "react-icons/bs";
 import { useRouter } from "next/router";
 
-const Timeboxing = () => {
+const TimeboxingPage = () => {
   const router = useRouter();
   const { timeboxing } = useContext(UserContext);
 
@@ -49,4 +49,4 @@ const Timeboxing = () => {
   );
 };
 
-export default Timeboxing;
+export default TimeboxingPage;

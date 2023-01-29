@@ -1,11 +1,11 @@
 import { useRouter } from "next/router";
 import Header from "../components/Header";
 import Head from "next/head";
-import style from "../styles/estarlincito.module.css";
+import style from "../styles/homePage.module.css";
 import { useContext } from "react";
 import UserContext from "../context/UserContext";
 
-const Home = () => {
+const HomePage = () => {
   const router = useRouter();
   const { timeboxing } = useContext(UserContext);
 
@@ -33,4 +33,4 @@ const Home = () => {
   }
 };
 
-export default Home;
+export default HomePage;

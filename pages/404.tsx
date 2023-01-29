@@ -1,5 +1,5 @@
 import Link from "next/link";
-import style from "../styles/noFoun.module.css";
+import style from "../styles/noFounPage.module.css";
 
 const NotFounPage = () => {
   return (

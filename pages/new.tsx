@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import Form from "../components/Form";
-import style from "../styles/new.module.css";
+import style from "../styles/newPage.module.css";
 
 const NewPage = () => {
   return (
