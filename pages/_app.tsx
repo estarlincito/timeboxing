@@ -1,6 +1,17 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import type { AppProps } from "next/app";
+import Navbar from "../components/Navbar";
+import ContextPrivider from "../context/ContextProvider";
+import "../styles/app.css";
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
-}
+const App = ({ Component, pageProps }: AppProps) => {
+  return (
+    <ContextPrivider>
+      <div className="groupers">
+        <Navbar />
+        <Component {...pageProps} />
+      </div>
+    </ContextPrivider>
+  );
+};
+
+export default App;

@@ -1,0 +1,29 @@
+.navbar {
+  background-color: var(--color5);
+  color: var(--color1);
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.navbar ul {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  height: 50px;
+}
+
+.navbar ul li {
+  list-style: none;
+}
+
+.navbar ul li a {
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--color1);
+}
+
+.active {
+  text-decoration: underline;
+}

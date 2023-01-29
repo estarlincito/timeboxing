@@ -1,0 +1,9 @@
+.main {
+  padding: 30px 0px 30px 0px;
+}
+
+.main a {
+  display: block;
+  color: var(--color5);
+  height: 50px;
+}
