@@ -1,9 +1,9 @@
-import { useRouter } from "next/router";
-import Header from "../components/Header";
-import Head from "next/head";
-import style from "../styles/home.module.css";
-import { useContext } from "react";
-import UserContext from "../context/UserContext";
+// import { useRouter } from "next/router";
+// import Header from "../components/Header";
+// import Head from "next/head";
+// import style from "../styles/home.module.css";
+// import { useContext } from "react";
+// import UserContext from "../context/UserContext";
 
 const Home = () => {
   // const router = useRouter();
