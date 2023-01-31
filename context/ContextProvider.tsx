@@ -7,23 +7,27 @@ type props = {
 };
 
 const ContextPrivider = ({ children }: props) => {
+  // console.log("timeboxing");
   const [timeboxing, setTimeboxing] = useState<timeboxingTS[]>([]);
   const appRender = useRef(0);
 
+  //whent client start app
   useEffect(() => {
-    //to one render
+    const timeboxingLS =
+      localStorage.getItem("timeboxing") ?? JSON.stringify([]);
+
+    setTimeboxing(JSON.parse(timeboxingLS));
+  }, []);
+
+  //whent client update timeboxing
+  useEffect(() => {
     if (appRender.current === 0) {
       appRender.current = appRender.current + 1;
       return;
     }
 
-    //get timeboxing from localStorage
-    if (!localStorage.getItem("timeboxing")?.length) {
-      localStorage.setItem("timeboxing", JSON.stringify(timeboxing));
-    } else {
-      setTimeboxing(JSON.parse(localStorage.getItem("timeboxing") || ""));
-    }
-  }, []);
+    localStorage.setItem("timeboxing", JSON.stringify(timeboxing));
+  }, [timeboxing]);
 
   return (
     <UserContext.Provider

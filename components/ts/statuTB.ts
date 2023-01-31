@@ -24,7 +24,6 @@ const statuTB = (timeboxing: timeboxingTS[], id: number) => {
     return item;
   });
 
-  localStorage.setItem("timeboxing", JSON.stringify(new_timeboxing));
   return new_timeboxing;
 };
 

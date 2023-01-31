@@ -20,7 +20,6 @@ const addTB = (
     },
   ];
 
-  localStorage.setItem("timeboxing", JSON.stringify(new_timeboxing));
   return new_timeboxing;
 };
 
