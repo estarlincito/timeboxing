@@ -1,4 +1,4 @@
-import timeboxingTS from "../../interface/timeboxingTS";
+import timeboxingTS from "../types/timeboxingTS";
 
 const addTB = (
   timeboxing: timeboxingTS[],

@@ -11,16 +11,8 @@ const Navbar = () => {
   return (
     <nav className={styles.navbar}>
       <ul>
-        <li
-          className={
-            router.pathname === "/" || router.pathname === "/timeboxing"
-              ? `${styles.active}`
-              : ""
-          }
-        >
-          <Link href={timeboxing.length === 0 ? "/" : "/timeboxing"}>
-            Timeboxing
-          </Link>
+        <li className={router.pathname === "/" ? `${styles.active}` : ""}>
+          <Link href="/">Timeboxing</Link>
         </li>
 
         <li className={router.pathname === "/doc" ? `${styles.active}` : ""}>

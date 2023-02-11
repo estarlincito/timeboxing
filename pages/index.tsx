@@ -4,6 +4,7 @@ import Head from "next/head";
 import style from "../styles/homePage.module.css";
 import { useContext } from "react";
 import UserContext from "../context/UserContext";
+import TimeboxingPage from "../components/Timeboxing";
 
 const HomePage = () => {
   const router = useRouter();
@@ -29,7 +30,7 @@ const HomePage = () => {
       </>
     );
   } else {
-    router.replace("/timeboxing");
+    return <TimeboxingPage />;
   }
 };
 

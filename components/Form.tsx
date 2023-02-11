@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 import UserContext from "../context/UserContext";
 import style from "../styles/form.module.css";
-import addTB from "./ts/addTB";
+import addTB from "../utils/addTB";
 
 const Form = () => {
   const { timeboxing, setTimeboxing } = useContext(UserContext);
@@ -27,7 +27,7 @@ const Form = () => {
     setType("");
 
     //back to home
-    router.push("/timeboxing");
+    router.push("/");
   };
 
   return (

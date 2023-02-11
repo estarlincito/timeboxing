@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import contextTS from "../interface/contextTS";
+import contextTS from "../types/contextTS";
 
 const UserContext = createContext(<contextTS>{});
 
