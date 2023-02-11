@@ -1,16 +1,7 @@
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+import Router from "next/router";
 
-const useLeavePageConfirmation = () => {
-  const router = useRouter();
-
-  useEffect(() => {
-    window.onbeforeunload = () => "Are you sure want to discard changes?";
-
-    return () => {
-      window.onbeforeunload = null;
-    };
-  }, [router.isReady]);
+const useUnsavedChangesWarning = () => {
+  console.log(Router);
 };
 
-export default useLeavePageConfirmation;
+export default useUnsavedChangesWarning;
