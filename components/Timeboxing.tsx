@@ -22,7 +22,7 @@ const TimeboxingPage = () => {
       </Head>
 
       <main className={style.main}>
-        <Link className="title link" href="/timeboxing">
+        <Link className="title link" href="/">
           TimeBoxing
         </Link>
 

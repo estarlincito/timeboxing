@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import RouterChangeStart from "../hooks/RouterChangeStart";
 import timeboxingTS from "../types/timeboxingTS";
 import UserContext from "./UserContext";
 
@@ -8,6 +9,9 @@ type props = {
 
 const ContextPrivider = ({ children }: props) => {
   const [timeboxing, setTimeboxing] = useState<timeboxingTS[]>([]);
+
+  //if timeboxing is run and router changed
+  RouterChangeStart(timeboxing);
 
   //whent client start app
   useEffect(() => {
