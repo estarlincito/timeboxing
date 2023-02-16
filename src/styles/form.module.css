@@ -1,0 +1,54 @@
+.form {
+  display: grid;
+  gap: 20px;
+  padding: 30px;
+  grid-auto-columns: auto;
+  border: 2px solid var(--color5);
+  color: var(--color3);
+  border-radius: 5px;
+}
+
+.form a {
+  color: var(--color3);
+}
+
+.form label {
+  font-weight: bold;
+}
+
+.form input {
+  outline: unset;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  color: var(--color1);
+  font-size: 1em;
+}
+
+.form textarea {
+  outline: unset;
+  border: none;
+  color: var(--color1);
+  border-radius: 5px;
+  padding: 10px;
+  min-height: 50px;
+  font-size: 1em;
+  resize: none;
+}
+
+.tiempo_input {
+  width: 50px;
+}
+
+.bloque_select {
+  padding: 10px;
+  width: 80px;
+  border: none;
+  border-radius: 5px;
+  color: var(--color1);
+  font-size: 1em;
+}
+
+.form button {
+  padding: 10px;
+}

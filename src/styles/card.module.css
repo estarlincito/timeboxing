@@ -1,0 +1,64 @@
+.card {
+  border: 3px solid var(--color5);
+  border-radius: 10px 0px 10px 0px;
+  color: var(--color4);
+  padding: 20px;
+  display: grid;
+  gap: 10px;
+}
+
+.title {
+  text-align: center;
+  color: var(--color3);
+}
+
+.text {
+  text-align: center;
+  color: var(--color3);
+  opacity: 0.9;
+}
+
+.time {
+  color: var(--color5);
+  border: 1px solid var(--color5);
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 25px;
+  padding: 20px;
+  margin: 10px;
+}
+
+.time h3 {
+  margin: auto;
+}
+
+.timeinf {
+  display: grid;
+}
+
+.end_time {
+  grid-row: 2/2;
+  justify-self: start;
+}
+
+.btns {
+  grid-row: 2/2;
+  justify-self: end;
+}
+
+.btn {
+  cursor: pointer;
+  color: var(--color5);
+  font-size: 20px;
+  opacity: 0.7;
+  margin-right: 10px;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.btn:active {
+  opacity: 1;
+}

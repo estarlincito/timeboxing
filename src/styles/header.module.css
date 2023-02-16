@@ -1,0 +1,15 @@
+.header {
+  border: 2px solid var(--color5);
+  color: var(--color3);
+  border-radius: 5px;
+  display: grid;
+  gap: 10px;
+  align-items: center;
+  padding: 20px;
+  margin-top: 30px;
+  min-height: 200px;
+}
+
+.header a {
+  color: var(--color3);
+}
