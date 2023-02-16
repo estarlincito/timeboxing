@@ -1,13 +1,17 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { allSeconds } from "@/src/utils/allSeconds";
 import { formatTimer } from "@/src/utils/formatTimer";
+import UserContext from "../context/UserContext";
+import { delayTB } from "../utils/delayTB";
 
 type props = {
   timer: string;
 };
 
-const Countdown = ({ timer }: props) => {
+const Countdown = ({ timer = "02:44:21" }: props) => {
   const [countdown, setCountdown] = useState(allSeconds(timer));
+  const { btn_increment, setBnt_increment, btn_reset, setBnt_reset } =
+    useContext(UserContext);
   const timerId: any = useRef();
 
   useEffect(() => {
@@ -23,6 +27,30 @@ const Countdown = ({ timer }: props) => {
       clearInterval(timerId.current);
     }
   }, [countdown]);
+
+  //if current time increment
+  useEffect(() => {
+    if (btn_increment === "on") {
+      setCountdown((prev) => prev + 900);
+
+      (async () => {
+        await delayTB(300);
+        setBnt_increment("off");
+      })();
+    }
+  }, [btn_increment, setBnt_increment]);
+
+  //whent current time reset
+  useEffect(() => {
+    if (btn_reset === "on") {
+      setCountdown(allSeconds(timer));
+
+      (async () => {
+        await delayTB(300);
+        setBnt_reset("off");
+      })();
+    }
+  }, [btn_reset, setBnt_reset, timer]);
 
   return <h3>{formatTimer(countdown)}</h3>;
 };

@@ -4,12 +4,12 @@
   padding: 30px;
   grid-auto-columns: auto;
   border: 2px solid var(--color5);
-  color: var(--color3);
+  color: var(--color4);
   border-radius: 5px;
 }
 
 .form a {
-  color: var(--color3);
+  color: var(--color4);
 }
 
 .form label {

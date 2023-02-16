@@ -1,6 +1,5 @@
 .navbar {
   border: 2px solid var(--color5);
-  color: var(--color2);
   border-radius: 5px;
   height: 100px;
   display: grid;
@@ -24,7 +23,7 @@
 .navbar ul li a {
   font-weight: bold;
   text-decoration: none;
-  color: var(--color2);
+  color: var(--color1);
 }
 
 .active {

@@ -9,7 +9,10 @@ import {
   BsFillTrashFill,
   BsPlusCircleFill,
   BsArrowClockwise,
+  BsPlusCircle,
+  BsArrowCounterclockwise,
 } from "react-icons/bs";
+import { delayTB } from "../utils/delayTB";
 
 type props = timeboxingTS;
 
@@ -23,27 +26,75 @@ const Card = ({
   init_time,
   end_time,
 }: props) => {
-  const { timeboxing, statuTB, deleteTB, incrementsTB, resetTB } =
-    useContext(UserContext);
-  const HTML_Card = useRef<HTMLDivElement>(null);
+  // UserContext
+  const {
+    btn_increment,
+    setBnt_increment,
+    btn_reset,
+    setBnt_reset,
+    statuTB,
+    deleteTB,
+    incrementsTB,
+    resetTB,
+  } = useContext(UserContext);
+  const card_ref = useRef<HTMLDivElement>(null);
+
+  //Status "run" || "on"
+  const currentStatu = (action: string) => {
+    switch (action) {
+      case "increments": {
+        if (statu === "run") {
+          setBnt_increment("on");
+        }
+        if (statu === "stop") {
+          setBnt_increment("on");
+
+          (async () => {
+            await delayTB(300);
+            setBnt_increment("off");
+          })();
+        }
+
+        return;
+      }
+
+      case "reset": {
+        if (statu === "run") {
+          setBnt_reset("on");
+        }
+        if (statu === "stop") {
+          setBnt_reset("on");
+
+          (async () => {
+            await delayTB(300);
+            setBnt_reset("off");
+          })();
+        }
+
+        return;
+      }
+    }
+  };
 
   //incremente 15 minutes
   const handleIncrement = () => {
-    if (HTML_Card.current?.innerText) {
-      const current_duration = HTML_Card.current.innerText;
+    if (card_ref.current?.innerText) {
+      const current_duration = card_ref.current.innerText;
       incrementsTB(id, current_duration);
+      currentStatu("increments");
     }
   };
 
   //back to init value
   const handleReset = () => {
     resetTB(id, init_time);
+    currentStatu("reset");
   };
 
   //Statu change
   const handlePlay = () => {
-    if (HTML_Card.current?.innerText) {
-      const current_duration = HTML_Card.current.innerText;
+    if (card_ref.current?.innerText) {
+      const current_duration = card_ref.current.innerText;
       statuTB(id, current_duration);
     }
   };
@@ -58,7 +109,7 @@ const Card = ({
       <h3 className={style.title}>{name}</h3>
       <p className={style.text}>&quot;{obj}&quot;</p>
 
-      <div className={style.time} ref={HTML_Card}>
+      <div className={style.time} ref={card_ref}>
         {statu === "stop" ? (
           <h3>{duration}</h3>
         ) : (
@@ -72,10 +123,18 @@ const Card = ({
             {type === "flexible" ? (
               <>
                 <BsFillPlayFill className={style.btn} onClick={handlePlay} />
-                <BsPlusCircleFill
-                  className={style.btn}
-                  onClick={handleIncrement}
-                />
+
+                {btn_increment === "off" ? (
+                  <BsPlusCircle
+                    className={style.btn}
+                    onClick={handleIncrement}
+                  />
+                ) : (
+                  <BsPlusCircleFill
+                    className={style.btn}
+                    onClick={handleIncrement}
+                  />
+                )}
                 <BsArrowClockwise className={style.btn} onClick={handleReset} />
                 <BsFillTrashFill className={style.btn} onClick={handleDelete} />
               </>
@@ -95,17 +154,36 @@ const Card = ({
             </span>
 
             <div className={style.btns}>
+
+
               {type === "flexible" ? (
                 <>
                   <BsFillPauseFill className={style.btn} onClick={handlePlay} />
-                  <BsPlusCircleFill
-                    className={style.btn}
-                    onClick={handleIncrement}
-                  />
-                  <BsArrowClockwise
-                    className={style.btn}
-                    onClick={handleReset}
-                  />
+
+                  {btn_increment === "off" ? (
+                    <BsPlusCircle
+                      className={style.btn}
+                      onClick={handleIncrement}
+                    />
+                  ) : (
+                    <BsPlusCircleFill
+                      className={style.btn}
+                      onClick={handleIncrement}
+                    />
+                  )}
+
+                  {btn_reset === "off" ? (
+                    <BsArrowClockwise
+                      className={style.btn}
+                      onClick={handleReset}
+                    />
+                  ) : (
+                    <BsArrowCounterclockwise
+                      className={style.btn}
+                      onClick={handleReset}
+                    />
+                  )}
+
                   <BsFillTrashFill
                     className={style.btn}
                     onClick={handleDelete}
@@ -124,6 +202,8 @@ const Card = ({
                   />
                 </>
               )}
+
+              
             </div>
           </>
         )}

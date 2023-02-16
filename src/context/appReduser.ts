@@ -47,9 +47,12 @@ const appReducer = (timeboxing: timeboxingTS[], { type, payload }: action) => {
 
       const duration = formatTimer(seconds + increment);
 
+      //update end time
+      const end_time = endTime(duration);
+
       const new_timeboxing = timeboxing.map((item) => {
         if (item.id === payload.id) {
-          return { ...item, duration };
+          return { ...item, duration, end_time };
         } else {
           return item;
         }
@@ -60,10 +63,12 @@ const appReducer = (timeboxing: timeboxingTS[], { type, payload }: action) => {
 
     case "RESET": {
       const duration = payload.init_time;
+      //update end time
+      const end_time = endTime(duration);
 
       const new_timeboxing = timeboxing.map((item) => {
         if (item.id === payload.id) {
-          return { ...item, duration };
+          return { ...item, duration, end_time };
         } else {
           return item;
         }

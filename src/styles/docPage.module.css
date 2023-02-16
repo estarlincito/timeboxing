@@ -7,12 +7,12 @@
 }
 
 .estrategias h3 a {
-  color: var(--color3);
+  color: var(--color4);
 }
 
 .main section {
   border: 2px solid var(--color5);
-  color: var(--color3);
+  color: var(--color4);
   border-radius: 5px;
   padding: 30px;
 }

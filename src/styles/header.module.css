@@ -1,6 +1,6 @@
 .header {
   border: 2px solid var(--color5);
-  color: var(--color3);
+  color: var(--color4);
   border-radius: 5px;
   display: grid;
   gap: 10px;
@@ -11,5 +11,5 @@
 }
 
 .header a {
-  color: var(--color3);
+  color: var(--color4);
 }
