@@ -1,19 +1,25 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { allSeconds } from "@/src/utils/allSeconds";
 import { formatTimer } from "@/src/utils/formatTimer";
-import UserContext from "../context/UserContext";
 import { delayTB } from "../utils/delayTB";
 
 type props = {
-  timer: string;
+  duration: string;
+  status: {
+    btn: {
+      reset: boolean;
+      incremente: boolean;
+    };
+    setBtn: (btn: { reset: boolean; incremente: boolean }) => void;
+  };
 };
 
-const Countdown = ({ timer = "02:44:21" }: props) => {
-  const [countdown, setCountdown] = useState(allSeconds(timer));
-  const { btn_increment, setBnt_increment, btn_reset, setBnt_reset } =
-    useContext(UserContext);
+const Countdown = ({ duration, status }: props) => {
+  const [countdown, setCountdown] = useState(allSeconds(duration));
+  const { btn, setBtn } = status;
   const timerId: any = useRef();
 
+  //set timer
   useEffect(() => {
     timerId.current = setInterval(() => {
       setCountdown((prev) => prev - 1);
@@ -28,29 +34,20 @@ const Countdown = ({ timer = "02:44:21" }: props) => {
     }
   }, [countdown]);
 
-  //if current time increment
+  //if increments or reset
   useEffect(() => {
-    if (btn_increment === "on") {
-      setCountdown((prev) => prev + 900);
+    if (btn.incremente || btn.reset) {
+      setCountdown(allSeconds(duration));
 
       (async () => {
         await delayTB(300);
-        setBnt_increment("off");
+        setBtn({
+          reset: false,
+          incremente: false,
+        });
       })();
     }
-  }, [btn_increment, setBnt_increment]);
-
-  //whent current time reset
-  useEffect(() => {
-    if (btn_reset === "on") {
-      setCountdown(allSeconds(timer));
-
-      (async () => {
-        await delayTB(300);
-        setBnt_reset("off");
-      })();
-    }
-  }, [btn_reset, setBnt_reset, timer]);
+  }, [btn, duration, setBtn]);
 
   return <h3>{formatTimer(countdown)}</h3>;
 };

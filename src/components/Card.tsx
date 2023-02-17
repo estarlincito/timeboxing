@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import UserContext from "../context/UserContext";
 import timeboxingTS from "../types/timeboxingTS";
 import Countdown from "./Countdown";
@@ -27,31 +27,36 @@ const Card = ({
   end_time,
 }: props) => {
   // UserContext
-  const {
-    btn_increment,
-    setBnt_increment,
-    btn_reset,
-    setBnt_reset,
-    statuTB,
-    deleteTB,
-    incrementsTB,
-    resetTB,
-  } = useContext(UserContext);
+  const { statuTB, deleteTB, incrementsTB, resetTB } = useContext(UserContext);
   const card_ref = useRef<HTMLDivElement>(null);
+  const [btn, setBtn] = useState({
+    reset: false,
+    incremente: false,
+  });
 
   //Status "run" || "on"
   const currentStatu = (action: string) => {
     switch (action) {
       case "increments": {
         if (statu === "run") {
-          setBnt_increment("on");
+          setBtn({
+            reset: false,
+            incremente: true,
+          });
         }
         if (statu === "stop") {
-          setBnt_increment("on");
+          setBtn({
+            reset: false,
+            incremente: true,
+          });
 
           (async () => {
             await delayTB(300);
-            setBnt_increment("off");
+
+            setBtn({
+              reset: false,
+              incremente: false,
+            });
           })();
         }
 
@@ -60,14 +65,24 @@ const Card = ({
 
       case "reset": {
         if (statu === "run") {
-          setBnt_reset("on");
+          setBtn({
+            reset: true,
+            incremente: false,
+          });
         }
         if (statu === "stop") {
-          setBnt_reset("on");
+          setBtn({
+            reset: true,
+            incremente: false,
+          });
 
           (async () => {
             await delayTB(300);
-            setBnt_reset("off");
+
+            setBtn({
+              reset: false,
+              incremente: false,
+            });
           })();
         }
 
@@ -113,7 +128,7 @@ const Card = ({
         {statu === "stop" ? (
           <h3>{duration}</h3>
         ) : (
-          <Countdown timer={duration} />
+          <Countdown duration={duration} status={{ btn, setBtn }} />
         )}
       </div>
 
@@ -124,7 +139,7 @@ const Card = ({
               <>
                 <BsFillPlayFill className={style.btn} onClick={handlePlay} />
 
-                {btn_increment === "off" ? (
+                {btn.incremente === false ? (
                   <BsPlusCircle
                     className={style.btn}
                     onClick={handleIncrement}
@@ -135,13 +150,37 @@ const Card = ({
                     onClick={handleIncrement}
                   />
                 )}
-                <BsArrowClockwise className={style.btn} onClick={handleReset} />
+
+                {btn.reset === false ? (
+                  <BsArrowClockwise
+                    className={style.btn}
+                    onClick={handleReset}
+                  />
+                ) : (
+                  <BsArrowCounterclockwise
+                    className={style.btn}
+                    onClick={handleReset}
+                  />
+                )}
+
                 <BsFillTrashFill className={style.btn} onClick={handleDelete} />
               </>
             ) : (
               <>
                 <BsFillPlayFill className={style.btn} onClick={handlePlay} />
-                <BsArrowClockwise className={style.btn} onClick={handleReset} />
+
+                {btn.reset === false ? (
+                  <BsArrowClockwise
+                    className={style.btn}
+                    onClick={handleReset}
+                  />
+                ) : (
+                  <BsArrowCounterclockwise
+                    className={style.btn}
+                    onClick={handleReset}
+                  />
+                )}
+
                 <BsFillTrashFill className={style.btn} onClick={handleDelete} />
               </>
             )}
@@ -154,13 +193,11 @@ const Card = ({
             </span>
 
             <div className={style.btns}>
-
-
               {type === "flexible" ? (
                 <>
                   <BsFillPauseFill className={style.btn} onClick={handlePlay} />
 
-                  {btn_increment === "off" ? (
+                  {btn.incremente === false ? (
                     <BsPlusCircle
                       className={style.btn}
                       onClick={handleIncrement}
@@ -172,7 +209,7 @@ const Card = ({
                     />
                   )}
 
-                  {btn_reset === "off" ? (
+                  {btn.reset === false ? (
                     <BsArrowClockwise
                       className={style.btn}
                       onClick={handleReset}
@@ -192,18 +229,25 @@ const Card = ({
               ) : (
                 <>
                   <BsFillPauseFill className={style.btn} onClick={handlePlay} />
-                  <BsArrowClockwise
-                    className={style.btn}
-                    onClick={handleReset}
-                  />
+
+                  {btn.reset === false ? (
+                    <BsArrowClockwise
+                      className={style.btn}
+                      onClick={handleReset}
+                    />
+                  ) : (
+                    <BsArrowCounterclockwise
+                      className={style.btn}
+                      onClick={handleReset}
+                    />
+                  )}
+
                   <BsFillTrashFill
                     className={style.btn}
                     onClick={handleDelete}
                   />
                 </>
               )}
-
-              
             </div>
           </>
         )}

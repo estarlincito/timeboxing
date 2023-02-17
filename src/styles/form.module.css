@@ -41,8 +41,8 @@
 }
 
 .bloque_select {
-  padding: 10px;
-  width: 80px;
+  height: 30px;
+  width: 90px;
   border: none;
   border-radius: 5px;
   color: var(--color1);

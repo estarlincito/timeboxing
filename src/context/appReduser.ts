@@ -24,7 +24,7 @@ const appReducer = (timeboxing: timeboxingTS[], { type, payload }: action) => {
         if (item.id === payload.id) {
           //change statu
           const statu = item.statu === "stop" ? "run" : "stop";
-
+          
           //update end time
           const end_time = endTime(duration);
 

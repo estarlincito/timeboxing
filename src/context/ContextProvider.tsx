@@ -8,8 +8,6 @@ type props = {
 
 const ContextPrivider = ({ children }: props) => {
   const [timeboxing, dispatch] = useReducer(appReducer, []);
-  const [btn_increment, setBnt_increment] = useState("off");
-  const [btn_reset, setBnt_reset] = useState("off");
 
   //whent client start app
   useEffect(() => {
@@ -91,10 +89,6 @@ const ContextPrivider = ({ children }: props) => {
     <UserContext.Provider
       value={{
         timeboxing,
-        btn_increment,
-        setBnt_increment,
-        btn_reset,
-        setBnt_reset,
         postTB,
         statuTB,
         deleteTB,

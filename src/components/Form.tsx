@@ -2,7 +2,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { FormEvent, useContext, useState } from "react";
 import UserContext from "../context/UserContext";
-import timeboxingTS from "../types/timeboxingTS";
 import style from "../styles/form.module.css";
 
 const Form = () => {

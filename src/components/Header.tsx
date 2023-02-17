@@ -26,9 +26,8 @@ const Header = () => {
         generando más fatiga de la que debiera. Para más información lee la
         &nbsp;
         <Link className="link" href="/doc">
-          documentación
+          documentación.
         </Link>
-        .
       </p>
     </header>
   );
